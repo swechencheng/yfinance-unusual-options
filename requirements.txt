@@ -1,0 +1,9 @@
+pandas
+lxml
+yfinance
+html5lib
+fastapi
+uvicorn
+aiofiles
+pydantic
+apscheduler

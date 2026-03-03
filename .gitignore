@@ -1,0 +1,9 @@
+secret.json
+
+__pycache__/
+venv/
+logs/
+yfinance_unusual_options.egg-info/
+
+.temp
+unusual_options_*.csv

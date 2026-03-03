@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unusual Options Flow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+
+<body>
+  <div class="background-effects">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+  </div>
+
+  <div class="app-container">
+    <header>
+      <div class="header-content">
+        <h1>Unusual Options Flow</h1>
+        <p class="subtitle">Real-time institutional smart money screener</p>
+      </div>
+      <div class="header-stats">
+        <div class="stat-box">
+          <span class="stat-label">File Loaded</span>
+          <span id="file-loaded-stat" class="stat-value">--</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-label">Total Sweeps</span>
+          <span id="total-sweeps-stat" class="stat-value">--</span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="controls-bar">
+        <div class="search-container">
+          <input type="text" id="ticker-search" placeholder="Search ticker..." />
+        </div>
+        <div class="file-selector-container" style="margin-left: auto;">
+          <select id="file-selector"
+            style="background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-primary); padding: 0.75rem 1.25rem; border-radius: 8px; font-family: var(--font-primary); font-size: 0.9rem; outline: none; transition: all 0.2s ease; backdrop-filter: blur(12px); cursor: pointer;">
+            <option value="">Loading files...</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <table id="options-table">
+          <thead>
+            <tr>
+              <th data-sort="Ticker" class="sortable">Ticker <span class="sort-icon"></span></th>
+              <th data-sort="Expiration" class="sortable">Expiry <span class="sort-icon"></span></th>
+              <th data-sort="strike" class="sortable">Strike <span class="sort-icon"></span></th>
+              <th data-sort="Stock_Price" class="sortable">Stock <span class="sort-icon"></span></th>
+              <th data-sort="Type" class="sortable">Type <span class="sort-icon"></span></th>
+              <th data-sort="Estimated_Side" class="sortable">C/P <span class="sort-icon"></span></th>
+              <th data-sort="Estimated_Premium" class="sortable sort-desc">Premium <span class="sort-icon">▼</span></th>
+              <th data-sort="vol/OI" class="sortable">Vol/OI <span class="sort-icon"></span></th>
+              <th data-sort="Moneyness" class="sortable">% ITM/OTM <span class="sort-icon"></span></th>
+              <th data-sort="lastPrice" class="sortable">Last <span class="sort-icon"></span></th>
+              <th data-sort="bid" class="sortable">Bid <span class="sort-icon"></span></th>
+              <th data-sort="ask" class="sortable">Ask <span class="sort-icon"></span></th>
+              <th data-sort="volume" class="sortable">Volume <span class="sort-icon"></span></th>
+              <th data-sort="openInterest" class="sortable">OI <span class="sort-icon"></span></th>
+              <th data-sort="impliedVolatility" class="sortable">IV <span class="sort-icon"></span></th>
+              <th data-sort="Updated" class="sortable">Updated <span class="sort-icon"></span></th>
+            </tr>
+          </thead>
+          <tbody id="options-tbody">
+            <tr>
+              <td colspan="16" class="loading-cell">
+                <div class="loader"></div>
+                Loading data...
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+
+</html>
