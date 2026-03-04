@@ -244,14 +244,17 @@ def filter_previous_day_data(df_new, now_date):
     if not csv_files:
         return df_new
 
-    # Get the latest file from previous days
-    latest_prev_file = max(csv_files)
+    # Filter data from previous days
     try:
-        df_prev = pd.read_csv(latest_prev_file)
         prev_map = {}
-        for r in df_prev.to_dict("records"):
-            k = (r["Ticker"], r["Expiration"], r["Type"], r["strike"])
-            prev_map[k] = r
+        for prev_file in csv_files:
+            try:
+                df_prev = pd.read_csv(prev_file)
+                for r in df_prev.to_dict("records"):
+                    k = (r["Ticker"], r["Expiration"], r["Type"], r["strike"])
+                    prev_map[k] = r
+            except Exception as e:
+                print(f"Error reading previous day data {prev_file}: {e}")
 
         filtered_records = []
         for r in df_new.to_dict("records"):
@@ -259,7 +262,7 @@ def filter_previous_day_data(df_new, now_date):
             if k in prev_map:
                 prev_vals = prev_map[k]
 
-                # If volume is identical to yesterday, this is stale pre-market data.
+                # If volume is identical to existing data, this is stale pre-market data.
                 if r.get("volume") == prev_vals.get("volume"):
                     continue
 
@@ -299,7 +302,7 @@ def filter_previous_day_data(df_new, now_date):
             else pd.DataFrame(columns=df_new.columns)
         )
     except Exception as e:
-        print(f"Error reading previous day data {latest_prev_file}: {e}")
+        print(f"Error processing previous days data: {e}")
         return df_new
 
 
