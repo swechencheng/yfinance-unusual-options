@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   let allData = [];
-  let currentSortCol = 'Estimated_Premium';
+  let currentSortCol = 'Expiration';
   let currentSortDir = 'desc'; // 'asc' or 'desc'
   const tbody = document.getElementById("options-tbody");
   const searchInput = document.getElementById("ticker-search");
